@@ -64,4 +64,12 @@ public class StudentDAOImp implements StudentDAO {
         Student theStudent = entityManager.find(Student.class, id);
         entityManager.remove(theStudent);
     }
+
+    @Override
+    @Transactional
+    public int deleteAll() {
+        int numDeletedRows = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+
+        return numDeletedRows;
+    }
 }
